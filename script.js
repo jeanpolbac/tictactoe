@@ -14,14 +14,36 @@ const scoreDisplay = document.querySelector(".score");
 const gameMessage = document.querySelector(".game-message");
 
 // Debugging logs
-console.log('We have access to Cells', cells);
-console.log('We have access to start-button', startButton);
-console.log('We have access to reset-button', resetButton);
-console.log('We have access to score', scoreDisplay);
-console.log('We have access to game-message', gameMessage);
+// console.log('We have access to Cells', cells);
+// console.log('We have access to start-button', startButton);
+// console.log('We have access to reset-button', resetButton);
+// console.log('We have access to score', scoreDisplay);
+// console.log('We have access to game-message', gameMessage);
 
-// Add Event listeners
+// startButton Event Listener
+startButton.addEventListener("click", () => {
+  // console.log("Congrats, you have pressed Start");
+  // This is not complete. Just setting up the placeholder.
+});
 
+// resetButton Event Listener
+resetButton.addEventListener("click", () => {
+  // console.log("Congrats, you have pressed Reset");
+  // This is not complete. Just setting up the placeholder.
+});
+
+/** cells Event Listener
+ * Had to create a loop as cells is targetting all
+ * the elements with the same class on the html side.
+ * Using template literal to get index of each cell block
+ * in the log output
+ */
+cells.forEach((cell, index) => {
+  cell.addEventListener("click", () => {
+    // console.log(`Congrats, you have pressed a Cell ${index}`);
+    // This is not complete. Just setting up the placeholder.
+  });
+});
 
 /** Player Class
  * Player class uses the parameter Symbol to
@@ -34,18 +56,12 @@ class Player {
   }
 }
 
-
 /** Game Class
  * Not started but will contain logic on how
  * the game works.
  */
 class Game {
-    //need to add rules on how the game works
+  // This is not complete. Just setting up the placeholder.
 }
 
-
-// Add necessary instances 
-
-
-
-// Add Event listeners
+// Add necessary instances
