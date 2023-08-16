@@ -37,6 +37,8 @@ body {
 
 .score {
   color: #e57373;
+  background-color: #fff;
+  padding: 10px;
   font-size: 50px;
   align-self: center;
 }
