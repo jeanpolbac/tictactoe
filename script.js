@@ -20,20 +20,28 @@ console.log('We have access to reset-button', resetButton);
 console.log('We have access to score', scoreDisplay);
 console.log('We have access to game-message', gameMessage);
 
-
-// Game variables
-
+// Add Event listeners
 
 
-// Defining what winning is
-
-
-
-/**Definining classes needed
- * One for the Player that will be used for X and O
- * One for the Game to manage how it works.
+/** Player Class
+ * Player class uses the parameter Symbol to
+ * represents X or O for each player.
+ * Players will be added later on.
  */
+class Player {
+  constructor(symbol) {
+    this.symbol = symbol;
+  }
+}
 
+
+/** Game Class
+ * Not started but will contain logic on how
+ * the game works.
+ */
+class Game {
+    //need to add rules on how the game works
+}
 
 
 // Add necessary instances 
