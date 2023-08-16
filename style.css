@@ -1,0 +1,100 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Site Wide Settings */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url(pinkBG.jpg);
+  background-color: #f0e4d7;
+  position: relative;
+}
+
+/* Top Container Layout */
+.top-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.logo {
+  color: #e57373;
+  font-size: 50px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.score {
+  color: #e57373;
+  font-size: 50px;
+  align-self: center;
+}
+
+/* Board and Cell Styling and Layout */
+.board {
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  color: #e57373;
+  cursor: pointer;
+  background-color: white;
+}
+
+.cell:hover {
+  background-color: lightcoral;
+}
+
+/* Buttons Styling and Layout */
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.start-button {
+  color: #e57373;
+  background-color: #fff;
+  border: 2px solid #e57373;
+  padding: 10px 10px;
+  font-size: 16px;
+}
+
+.start-button:hover {
+  background-color: #e57373;
+  color: #fff;
+}
+
+.reset-button {
+  color: #e57373;
+  background-color: #fff;
+  border: 2px solid #e57373;
+  padding: 10px 10px;
+  font-size: 16px;
+}
+
+.reset-button:hover {
+  background-color: #e57373;
+  color: #fff;
+}
