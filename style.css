@@ -1,3 +1,9 @@
+/* Fonts - Importing two fonts from Google Fonts - Finger Paint and Zen Tokyo Zoo
+Finger Paint: font-family: 'Finger Paint', cursive;
+Zen Tokyo Zoo: font-family: 'Zen Tokyo Zoo', cursive;
+*/
+@import url("https://fonts.googleapis.com/css2?family=Finger+Paint&family=Zen+Tokyo+Zoo&display=swap");
+
 /* CSS Reset */
 * {
   margin: 0;
@@ -7,16 +13,22 @@
 
 /* Site Wide Settings */
 body {
+  /* Setting font family and general layout*/
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  min-width: 450px;
   margin: 0;
   padding: 0;
+  /* Add background image.
+  Image sourced from: https://unsplash.com/photos/zA7I5BtFbvw
+  */
   background-image: url(pinkBG.jpg);
-  background-color: #f0e4d7;
   position: relative;
+  /*Blur effect placed over the background image*/
+  backdrop-filter: blur(10px);
 }
 
 /* Top Container Layout */
@@ -33,34 +45,48 @@ body {
   font-size: 50px;
   margin-left: 20px;
   margin-bottom: 20px;
+  font-family: "Zen Tokyo Zoo", cursive;
 }
 
 .score {
   color: #e57373;
-  background-color: #fff;
   padding: 10px;
   font-size: 50px;
   align-self: center;
+  flex-direction: column;
+  font-family: "Zen Tokyo Zoo", cursive;
 }
 
-/* Board and Cell Styling and Layout */
+/* Board, Cell Styling and Layout */
 .board {
   margin: 0 auto;
   width: 400px;
   height: 400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-gap: 25px 0px;
 }
 
 .cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 36px;
+  border-radius: 20px;
+  border-color: white;
+  border-style: solid;
+  font-size: 60px;
   color: #e57373;
+  font-family: "Finger Paint", cursive;
   cursor: pointer;
-  background-color: white;
+  /* Add transparency to the background color of each cell.
+  This is achieved by adding a fourth value to RGB which controls 
+  the opacity and transparency of the color.*/
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Add blur effect to background of each cell */
+  backdrop-filter: blur(10px);
+  width: 100px;
+  height: 100px;
+  padding: 20px;
 }
 
 .cell:hover {
@@ -81,11 +107,22 @@ body {
   border: 2px solid #e57373;
   padding: 10px 10px;
   font-size: 16px;
+  border-radius: 15px;
+  font-family: "Finger Paint", cursive;
 }
 
 .start-button:hover {
   background-color: #e57373;
   color: #fff;
+}
+
+.game-message {
+  color: #e57373;
+  padding: 10px;
+  font-size: 30px;
+  align-self: center;
+  border-radius: 20px;
+  font-family: "Finger Paint", cursive;
 }
 
 .reset-button {
@@ -94,6 +131,8 @@ body {
   border: 2px solid #e57373;
   padding: 10px 10px;
   font-size: 16px;
+  border-radius: 15px;
+  font-family: "Finger Paint", cursive;
 }
 
 .reset-button:hover {

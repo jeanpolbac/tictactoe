@@ -12,7 +12,6 @@ const resetButton = document.querySelector(".reset-button");
 const scoreDisplay = document.querySelector(".score");
 // const gameMessage - used to display winner message
 const gameMessage = document.querySelector(".game-message");
-
 // Debugging logs
 // console.log('We have access to Cells', cells);
 // console.log('We have access to start-button', startButton);
@@ -20,19 +19,45 @@ const gameMessage = document.querySelector(".game-message");
 // console.log('We have access to score', scoreDisplay);
 // console.log('We have access to game-message', gameMessage);
 
-// startButton Event Listener
+// Declaring player variables
+let playerOne;
+let playerTwo;
+
+// Add startButton Event Listener
 startButton.addEventListener("click", () => {
   // console.log("Congrats, you have pressed Start");
-  // This is not complete. Just setting up the placeholder.
+  playerOne = new Player("X");
+  playerTwo = new Player("O");
+
+  console.log("Player X Ready");
+  console.log("Player O Ready");
+
+  /** Need to complete a display message on gameMessage
+   * that the game started and current player symbol
+   */
+
+  /** Need  to make sure all cells are empty */
+
+  /** Need to start the game */
 });
 
-// resetButton Event Listener
+// Add resetButton Event Listener
 resetButton.addEventListener("click", () => {
   // console.log("Congrats, you have pressed Reset");
-  // This is not complete. Just setting up the placeholder.
+  //add line to reset gameboard
+
+  // reset of both players
+  playerOne = null;
+  playerTwo = null;
+  // Clear the content of each cell on the game board
+  cells.forEach((cell) => {
+    cell.textContent = "";
+  });
+  // Reset the game message
+  gameMessage.textContent = "Reset Complete.";
 });
 
-/** cells Event Listener
+/** Add cells Event Listener
  * Had to create a loop as cells is targetting all
  * the elements with the same class on the html side.
  * Using template literal to get index of each cell block
@@ -41,27 +66,36 @@ resetButton.addEventListener("click", () => {
 cells.forEach((cell, index) => {
   cell.addEventListener("click", () => {
     // console.log(`Congrats, you have pressed a Cell ${index}`);
-    // This is not complete. Just setting up the placeholder.
+    //Need to check if game is active and cells are empty
+    //Need to update board with symbol placement
+    //Need to update message for each player based on win, draw, or next turn
   });
 });
 
-/** Player Class
+/** Add Player Class
  * Player class uses the parameter Symbol to
  * represents X or O for each player.
- * Players will be added later on.
  */
 class Player {
   constructor(symbol) {
     this.symbol = symbol;
+    this.score = 0;
   }
 }
 
-/** Game Class
+/** Add Game Class
  * Not started but will contain logic on how
  * the game works.
  */
 class Game {
-  // This is not complete. Just setting up the placeholder.
+  constructor() {
+    // Need to initialize properties
+  }
 }
 
+// Need to update board and determine if player won, lost or draw
+
+// Need to switch player turn
+
 // Add necessary instances
+const game = new Game(); // Create an instance of the TicTacToeGame class
