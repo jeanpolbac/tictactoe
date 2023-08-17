@@ -33,7 +33,7 @@ startButton.addEventListener("click", () => {
   console.log("Player O Ready");
 
   /** Need to complete a display message on gameMessage
-   * that the game started and current player symbol
+   * that the game started and active player symbol
    */
 
   /** Need  to make sure all cells are empty */
@@ -57,6 +57,19 @@ resetButton.addEventListener("click", () => {
   gameMessage.textContent = "Reset Complete.";
 });
 
+// Add function to update the board - Need to complete class Game before testing it.
+function updateBoard(index) {
+  console.log("updateBoard called with index:", index);
+  /*Checks if the cell at the selected index is empty before updating*/
+  if (game.board[index] === "") {
+    /** Create activePlayer variable to
+     * store the index of the active player.
+     */
+    const activePlayer = game.players[game.activePlayerIndex];
+    //Add activePlayer symbol to the index selected by the player
+    game.board[index] = activePlayer.symbol;
+  }
+}
 /** Add cells Event Listener
  * Had to create a loop as cells is targetting all
  * the elements with the same class on the html side.
@@ -67,7 +80,6 @@ cells.forEach((cell, index) => {
   cell.addEventListener("click", () => {
     // console.log(`Congrats, you have pressed a Cell ${index}`);
     //Need to check if game is active and cells are empty
-    //Need to update board with symbol placement
     //Need to update message for each player based on win, draw, or next turn
   });
 });
