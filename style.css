@@ -1,8 +1,10 @@
 /* Fonts - Importing two fonts from Google Fonts - Finger Paint and Zen Tokyo Zoo
 Finger Paint: font-family: 'Finger Paint', cursive;
 Zen Tokyo Zoo: font-family: 'Zen Tokyo Zoo', cursive;
+Audiowide: font-family: 'Audiowide', cursive;
 */
 @import url("https://fonts.googleapis.com/css2?family=Finger+Paint&family=Zen+Tokyo+Zoo&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 /* CSS Reset */
 * {
@@ -42,22 +44,32 @@ body {
 
 .logo {
   color: #e57373;
-  font-size: 50px;
+  font-size: 58px;
   margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 20px;
-  font-family: "Zen Tokyo Zoo", cursive;
+  font-family: 'Audiowide', cursive;
 }
 
-.score {
+
+.score-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30%;
+}
+.score-o, .score-x {
   color: #e57373;
-  padding: 10px;
-  font-size: 50px;
+  /* padding: 10px; */
+  font-size: 60px;
   align-self: center;
   flex-direction: column;
-  font-family: "Zen Tokyo Zoo", cursive;
+  font-family: 'Audiowide', cursive;
 }
 
 /* Board, Cell Styling and Layout */
+
+
 .board {
   margin: 0 auto;
   width: 400px;
@@ -65,7 +77,10 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 25px 0px;
+  
 }
+
+
 
 .cell {
   display: flex;
@@ -87,7 +102,14 @@ body {
   width: 100px;
   height: 100px;
   padding: 20px;
+  /* Add individual box shadows to each cell */
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.5); /* Adjust shadow values */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow values */
 }
+
+
+
+
 
 .cell:hover {
   background-color: lightcoral;
@@ -103,12 +125,12 @@ body {
 
 .start-button {
   color: #e57373;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #e57373;
   padding: 10px 10px;
-  font-size: 16px;
+  font-size: 25px;
   border-radius: 15px;
-  font-family: "Finger Paint", cursive;
+  font-family: 'Audiowide', cursive;
 }
 
 .start-button:hover {
@@ -119,20 +141,19 @@ body {
 .game-message {
   color: #e57373;
   padding: 10px;
-  font-size: 30px;
+  font-size: 40px;
   align-self: center;
-  border-radius: 20px;
-  font-family: "Finger Paint", cursive;
+  font-family: 'Audiowide', cursive;
 }
 
 .reset-button {
   color: #e57373;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #e57373;
   padding: 10px 10px;
-  font-size: 16px;
+  font-size: 25px;
   border-radius: 15px;
-  font-family: "Finger Paint", cursive;
+  font-family: 'Audiowide', cursive;
 }
 
 .reset-button:hover {
