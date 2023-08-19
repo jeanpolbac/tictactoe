@@ -7,7 +7,6 @@ const resetButton = document.querySelector(".reset-button");
 const gameMessage = document.querySelector(".game-message");
 const scoreXDisplay = document.querySelector(".score-x");
 const scoreODisplay = document.querySelector(".score-o");
-
 // Debugging logs for querySelectors
 // console.log('We have access to Cells', cells);
 // console.log('We have access to start-button', startButton);
@@ -16,8 +15,22 @@ const scoreODisplay = document.querySelector(".score-o");
 // console.log('We have access to game-message', gameMessage);
 
 // Declaring players
+
 let playerOne;
 let playerTwo;
+
+// Reset the game to zero  - Need to fix as creating side effect with class Game.
+function resetBoard() {
+  gameResult = null;
+  gameActive = false;
+  playerOne = null;
+  playerTwo = null;
+  cells.forEach((cell) => {
+    cell.textContent = "";
+  });
+
+  gameMessage.textContent = "Reset Completed. Press Start to Begin";
+}
 
 // Update the board and check for win/draw
 function updateBoard(clickedCellIndex) {
@@ -31,9 +44,14 @@ function updateBoard(clickedCellIndex) {
 }
 
 // Keep score display updated for both players
-function updateScoreDisplay() {
-  scoreXDisplay.textContent = `X: ${game.players[0].score}`;
+function updateScoreDisplay(winner) {
+  if (winner === "Player X") {
+    scoreXDisplay.textContent = `X: ${game.players[0].score}`;
+  } else if (winner === "Player O") {
   scoreODisplay.textContent = `O: ${game.players[1].score}`;
+  }
+  console.log("After Update - Player X Score:", game.players[0].score);
+  console.log("After Update - Player O Score:", game.players[1].score);
 }
 
 // Update game message
@@ -56,7 +74,7 @@ function gameOutcome(result) {
   }
   if (winner) {
     updateGameMessage(`${winner} wins!`);
-    updateScoreDisplay();
+    updateScoreDisplay(winner);
   }
   game.gameActive = false;
 }
@@ -72,13 +90,7 @@ startButton.addEventListener("click", () => {
 });
 
 // Reset the game once button pressed
-resetButton.addEventListener("click", () => {
-  game.reset();
-  gameMessage.textContent = "Press Start to Begin";
-  cells.forEach((cell) => {
-    cell.textContent = "";
-  });
-});
+resetButton.addEventListener("click", resetBoard);
 
 /** Handles click event for each cell on the board and player interaction
  * Had to create a loop as cells is targetting all
@@ -118,11 +130,6 @@ class Player {
 // Manage the game logic (player turn, outcome, board state)
 class Game {
   constructor() {
-    this.reset();
-  }
-
-  // Method to reset game
-  reset() {
     this.players = [];
     this.activePlayerIndex = 0;
     this.board = ["", "", "", "", "", "", "", "", ""]; // Represents the 9 empty cells of the board

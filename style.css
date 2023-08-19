@@ -4,7 +4,7 @@ Zen Tokyo Zoo: font-family: 'Zen Tokyo Zoo', cursive;
 Audiowide: font-family: 'Audiowide', cursive;
 */
 @import url("https://fonts.googleapis.com/css2?family=Finger+Paint&family=Zen+Tokyo+Zoo&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
 /* CSS Reset */
 * {
@@ -48,9 +48,8 @@ body {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
-  font-family: 'Audiowide', cursive;
+  font-family: "Audiowide", cursive;
 }
-
 
 .score-container {
   display: flex;
@@ -58,17 +57,17 @@ body {
   justify-content: center;
   gap: 30%;
 }
-.score-o, .score-x {
+.score-o,
+.score-x {
   color: #e57373;
   /* padding: 10px; */
   font-size: 60px;
   align-self: center;
   flex-direction: column;
-  font-family: 'Audiowide', cursive;
+  font-family: "Audiowide", cursive;
 }
 
 /* Board, Cell Styling and Layout */
-
 
 .board {
   margin: 0 auto;
@@ -77,10 +76,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 25px 0px;
-  
 }
-
-
 
 .cell {
   display: flex;
@@ -107,10 +103,6 @@ body {
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow values */
 }
 
-
-
-
-
 .cell:hover {
   background-color: lightcoral;
 }
@@ -130,7 +122,7 @@ body {
   padding: 10px 10px;
   font-size: 25px;
   border-radius: 15px;
-  font-family: 'Audiowide', cursive;
+  font-family: "Audiowide", cursive;
 }
 
 .start-button:hover {
@@ -143,7 +135,7 @@ body {
   padding: 10px;
   font-size: 40px;
   align-self: center;
-  font-family: 'Audiowide', cursive;
+  font-family: "Audiowide", cursive;
 }
 
 .reset-button {
@@ -153,7 +145,7 @@ body {
   padding: 10px 10px;
   font-size: 25px;
   border-radius: 15px;
-  font-family: 'Audiowide', cursive;
+  font-family: "Audiowide", cursive;
 }
 
 .reset-button:hover {
