@@ -19,7 +19,7 @@ const scoreODisplay = document.querySelector(".score-o");
 let playerOne;
 let playerTwo;
 
-// Reset the game to zero  - Need to fix as creating side effect with class Game.
+// Reset the game to zero
 function resetBoard() {
   gameResult = null;
   gameActive = false;
