@@ -1,0 +1,162 @@
+/* Fonts - Importing two fonts from Google Fonts - Finger Paint and Audiowide
+Finger Paint: font-family: 'Finger Paint', cursive;
+Audiowide: font-family: 'Audiowide', cursive;
+*/
+@import url("https://fonts.googleapis.com/css2?family=Finger+Paint&family=Zen+Tokyo+Zoo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Site Wide Settings */
+body {
+  /* Setting font family and general layout*/
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  min-width: 450px;
+  margin: 0;
+  padding: 0;
+  /* Add background image.
+  Image sourced from: https://unsplash.com/photos/zA7I5BtFbvw
+  */
+  background-image: url(/images/pinkBG.jpg);
+  position: relative;
+  /*Blur effect placed over the background image*/
+  backdrop-filter: blur(10px);
+}
+
+/* Top Container Layout */
+.top-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.logo {
+  color: #e57373;
+  font-size: 58px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-family: "Audiowide", cursive;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30%;
+}
+.score-o,
+.score-x {
+  color: #e57373;
+  /* padding: 10px; */
+  font-size: 60px;
+  align-self: center;
+  flex-direction: column;
+  font-family: "Audiowide", cursive;
+}
+
+/* Board, Cell Styling and Layout */
+
+.board {
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px 0px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border-color: white;
+  border-style: solid;
+  font-size: 60px;
+  color: #e57373;
+  font-family: "Finger Paint", cursive;
+  cursor: pointer;
+  /* Add transparency to the background color of each cell.
+  This is achieved by adding a fourth value to RGB which controls 
+  the opacity and transparency of the color.*/
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Add blur effect to background of each cell */
+  backdrop-filter: blur(10px);
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  /* Add individual box shadows to each cell */
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.5); /* Adjust shadow values */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow values */
+}
+
+.cell:hover {
+  background-color: lightcoral;
+}
+
+/* Buttons Styling and Layout */
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.start-button {
+  color: #e57373;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid #e57373;
+  padding: 10px 10px;
+  font-size: 25px;
+  border-radius: 15px;
+  font-family: "Audiowide", cursive;
+}
+
+.start-button:hover {
+  background-color: #e57373;
+  color: #fff;
+}
+
+.game-message {
+  color: #e57373;
+  padding: 10px;
+  font-size: 40px;
+  align-self: center;
+  font-family: "Audiowide", cursive;
+}
+
+.reset-button {
+  color: #e57373;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid #e57373;
+  padding: 10px 10px;
+  font-size: 25px;
+  border-radius: 15px;
+  font-family: "Audiowide", cursive;
+}
+
+.reset-button:hover {
+  background-color: #e57373;
+  color: #fff;
+}
+
+/* Resources used
+https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids
+https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
+https://flexboxfroggy.com/
+https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
+https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
+https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgba
+*/
