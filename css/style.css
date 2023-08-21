@@ -26,7 +26,7 @@ body {
   /* Add background image.
   Image sourced from: https://unsplash.com/photos/zA7I5BtFbvw
   */
-  background-image: url(/images/pinkBG.jpg);
+  background-image: url(../images/pinkBG.jpg);
   position: relative;
   /*Blur effect placed over the background image*/
   backdrop-filter: blur(10px);
