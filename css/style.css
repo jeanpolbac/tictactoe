@@ -114,6 +114,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* Style for the grayed-out button */
 .start-button {
   color: #e57373;
   background-color: rgba(255, 255, 255, 0.3);
@@ -127,6 +128,17 @@ body {
 .start-button:hover {
   background-color: #e57373;
   color: #fff;
+}
+
+.button-disabled {
+  color: grey;
+  background-color: #585858;
+  cursor: not-allowed;
+}
+
+.button-disabled:hover {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .game-message {

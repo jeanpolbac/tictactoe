@@ -19,6 +19,8 @@ const scoreODisplay = document.querySelector(".score-o");
 let playerOne;
 let playerTwo;
 
+let activeButton = false;
+
 // Reset the game to zero
 function resetBoard() {
   gameResult = null;
@@ -37,9 +39,8 @@ function updateBoard(clickedCellIndex) {
   console.log("updateBoard called with index:", clickedCellIndex);
   if (board[clickedCellIndex] === "") {
     game.board[clickedCellIndex] = game.players[game.activePlayerIndex].symbol;
-    console.log("updatedboard", game.board);
     game.gameResult = game.determineResult();
-    console.log("game result", game.gameResult);
+    console.log("updateBoard Game Result", game.gameResult);
   }
 }
 
@@ -81,19 +82,32 @@ function gameOutcome(result) {
 
 // Start game and create players
 startButton.addEventListener("click", () => {
-  console.log("Congrats, you have pressed Start");
-  playerOne = new Player("X");
-  playerTwo = new Player("O");
-  console.log("Player X Ready");
-  console.log("Player O Ready");
-  game.startGame(playerOne, playerTwo);
+  if (!activeButton) {
+    console.log("Congrats, you have pressed Start");
+    playerOne = new Player("X");
+    playerTwo = new Player("O");
+    console.log("Player X Ready");
+    console.log("Player O Ready");
+    game.startGame(playerOne, playerTwo);
+    activeButton = true;
+    startButton.disabled = true;
+    resetButton.disabled = false;
+    startButton.classList.add("button-disabled");
+  }
 });
 
 // Reset the game once button pressed
-resetButton.addEventListener("click", resetBoard);
+resetButton.addEventListener("click", () => {
+  resetBoard();
+  activeButton = false;
+  startButton.disabled = false;
+  startButton.classList.remove("button-disabled");
+  resetButton.disabled = false;
+});
 
-/** Handles click event for each cell on the board and player interaction
- * Had to create a loop as cells is targetting all
+/** Cell click event listener
+ * Handles click event for each cell on the board and player interaction
+ * Had to create a loop as cells is targeting all
  * the elements with the same class on the html side.
  * Using template literal to get index of each cell block
  * in the log output
@@ -105,7 +119,7 @@ cells.forEach((cell, index) => {
       const activePlayer = game.players[game.activePlayerIndex]; //Checking if game is active and cells empty
       cell.textContent = activePlayer.symbol;
       game.updateBoard(index); // Update board with player symbol on the clicked cell
-      console.log("updated board", game.board);
+      console.log("updateBoard Cell Clicked", game.board);
       const result = game.gameResult;
       if (result) {
         console.log(`The winner is: ${result}`);
@@ -164,7 +178,7 @@ class Game {
       this.activePlayerIndex = 1;
     } else {
       this.activePlayerIndex = 0;
-      console.log("active player index is", this.activePlayerIndex);
+      console.log("Active player index is", this.activePlayerIndex);
     }
   }
 
@@ -173,7 +187,7 @@ class Game {
     console.log("determineResult Method Activated");
 
     /** Solution
-     * Contains the solition to win the game using rows, columns or diagonals.
+     * Contains the solution to win the game using rows, columns or diagonals.
      * Determined cell location by using the log located in cells eventlistener.
      */
     const listOfSolutions = [
@@ -201,7 +215,7 @@ class Game {
       console.log(`check ${a}, ${b}, ${c} for win`);
 
       if (
-        // Checks if symbol placement is the same accross  a, b and c
+        // Checks if symbol placement is the same across  a, b and c
         this.board[a] && //Checks if not empty
         this.board[a] === this.board[b] && this.board[a] === this.board[c] //Checks that a and b are equal and that b and c are equal
       ) {
@@ -241,7 +255,7 @@ class Game {
 const game = new Game();
 
 /** Resources Used
- * Checked differences between each one and decided on textContent as accorind got MDN,
+ * Checked differences between each one and decided on textContent as according got MDN,
  * innerHTML could become an attack vector on the site and creating a potential risk.
  * textContent: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
  * innerHTML: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
