@@ -7,6 +7,7 @@ const resetButton = document.querySelector(".reset-button");
 const gameMessage = document.querySelector(".game-message");
 const scoreXDisplay = document.querySelector(".score-x");
 const scoreODisplay = document.querySelector(".score-o");
+const scoreDrawDisplay = document.querySelector(".score-draw");
 // Debugging logs for querySelectors
 // console.log('We have access to Cells', cells);
 // console.log('We have access to start-button', startButton);
@@ -19,6 +20,7 @@ const scoreODisplay = document.querySelector(".score-o");
 let playerOne;
 let playerTwo;
 
+// Set start and reset button active or not
 let activeButton = false;
 
 // Reset the game to zero
@@ -30,8 +32,7 @@ function resetBoard() {
   cells.forEach((cell) => {
     cell.textContent = "";
   });
-
-  gameMessage.textContent = "Reset Completed. Press Start to Begin";
+  gameMessage.textContent = "Press Start to play again!";
 }
 
 // Update the board and check for win/draw
@@ -51,9 +52,12 @@ function updateScoreDisplay(winner) {
   } else if (winner === "Player O") {
   scoreODisplay.textContent = `O: ${game.players[1].score}`;
   }
+  scoreDrawDisplay.textContent = `Draw: ${game.drawScore}`;
   console.log("After Update - Player X Score:", game.players[0].score);
   console.log("After Update - Player O Score:", game.players[1].score);
 }
+
+
 
 // Update game message
 function updateGameMessage(message) {
@@ -150,6 +154,7 @@ class Game {
     this.gameActive = false; // Prevent anyone from playing until the game has started
     this.gameResult = null;
     this.playersCreated = false;
+    this.drawScore = 0;
   }
 
   // Method to start game
@@ -248,6 +253,11 @@ class Game {
     this.board[clickedCellIndex] = this.players[this.activePlayerIndex].symbol;
 
     this.gameResult = this.determineResult();
+
+    if (this.gameResult === "draw") {
+      this.drawScore++; 
+      updateScoreDisplay(); 
+    }
   }
 }
 

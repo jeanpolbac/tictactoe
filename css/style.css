@@ -18,9 +18,9 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100vh;
-  min-width: 450px;
+  min-width: 100%;
   margin: 0;
   padding: 0;
   /* Add background image.
@@ -43,7 +43,7 @@ body {
 
 .logo {
   color: #e57373;
-  font-size: 58px;
+  font-size: 4em;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -56,13 +56,15 @@ body {
   justify-content: center;
   gap: 30%;
 }
+.score-draw,
 .score-o,
 .score-x {
   color: #e57373;
   /* padding: 10px; */
-  font-size: 60px;
-  align-self: center;
-  flex-direction: column;
+  font-size: 3em;
+  /* align-self: center; */
+  /* flex-direction: column; */
+  justify-content: space-between;
   font-family: "Audiowide", cursive;
 }
 
@@ -84,14 +86,14 @@ body {
   border-radius: 20px;
   border-color: white;
   border-style: solid;
-  font-size: 60px;
+  font-size: 5em;
   color: #e57373;
   font-family: "Finger Paint", cursive;
   cursor: pointer;
   /* Add transparency to the background color of each cell.
   This is achieved by adding a fourth value to RGB which controls 
   the opacity and transparency of the color.*/
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   /* Add blur effect to background of each cell */
   backdrop-filter: blur(10px);
   width: 100px;
@@ -120,7 +122,7 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #e57373;
   padding: 10px 10px;
-  font-size: 25px;
+  font-size: 1.5em;
   border-radius: 15px;
   font-family: "Audiowide", cursive;
 }
@@ -144,7 +146,7 @@ body {
 .game-message {
   color: #e57373;
   padding: 10px;
-  font-size: 40px;
+  font-size: 2.5em;
   align-self: center;
   font-family: "Audiowide", cursive;
 }
@@ -154,7 +156,7 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #e57373;
   padding: 10px 10px;
-  font-size: 25px;
+  font-size: 1.5em;
   border-radius: 15px;
   font-family: "Audiowide", cursive;
 }
