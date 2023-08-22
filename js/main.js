@@ -1,4 +1,4 @@
-console.log("Connected and ready to play!");
+// console.log("Connected and ready to play!");
 
 // Selection of necessary elements from DOM
 const cells = document.querySelectorAll(".cell");
@@ -37,11 +37,11 @@ function resetBoard() {
 
 // Update the board and check for win/draw
 function updateBoard(clickedCellIndex) {
-  console.log("updateBoard called with index:", clickedCellIndex);
+  // console.log("updateBoard called with index:", clickedCellIndex);
   if (board[clickedCellIndex] === "") {
     game.board[clickedCellIndex] = game.players[game.activePlayerIndex].symbol;
     game.gameResult = game.determineResult();
-    console.log("updateBoard Game Result", game.gameResult);
+    // console.log("updateBoard Game Result", game.gameResult);
   }
 }
 
@@ -53,8 +53,8 @@ function updateScoreDisplay(winner) {
   scoreODisplay.textContent = `O: ${game.players[1].score}`;
   }
   scoreDrawDisplay.textContent = `Draw: ${game.drawScore}`;
-  console.log("After Update - Player X Score:", game.players[0].score);
-  console.log("After Update - Player O Score:", game.players[1].score);
+  // console.log("After Update - Player X Score:", game.players[0].score);
+  // console.log("After Update - Player O Score:", game.players[1].score);
 }
 
 
@@ -87,11 +87,11 @@ function gameOutcome(result) {
 // Start game and create players
 startButton.addEventListener("click", () => {
   if (!activeButton) {
-    console.log("Congrats, you have pressed Start");
+    // console.log("Congrats, you have pressed Start");
     playerOne = new Player("X");
     playerTwo = new Player("O");
-    console.log("Player X Ready");
-    console.log("Player O Ready");
+    // console.log("Player X Ready");
+    // console.log("Player O Ready");
     game.startGame(playerOne, playerTwo);
     activeButton = true;
     startButton.disabled = true;
@@ -118,15 +118,15 @@ resetButton.addEventListener("click", () => {
  */
 cells.forEach((cell, index) => {
   cell.addEventListener("click", () => {
-    console.log(`Congrats, you have pressed cell number ${index}`);
+    // console.log(`Congrats, you have pressed cell number ${index}`);
     if (game.gameActive && game.board[index] === "") {
       const activePlayer = game.players[game.activePlayerIndex]; //Checking if game is active and cells empty
       cell.textContent = activePlayer.symbol;
       game.updateBoard(index); // Update board with player symbol on the clicked cell
-      console.log("updateBoard Cell Clicked", game.board);
+      // console.log("updateBoard Cell Clicked", game.board);
       const result = game.gameResult;
       if (result) {
-        console.log(`The winner is: ${result}`);
+        // console.log(`The winner is: ${result}`);
         gameOutcome(result);
       } else {
         game.switchActivePlayer();
@@ -159,13 +159,12 @@ class Game {
 
   // Method to start game
   startGame(playerOne, playerTwo) {
-    console.log("startGame Method Activated");
-
+    // console.log("startGame Method Activated");
     gameMessage.textContent = "Game started. Player X's turn.";
     if (this.playersCreated === false) {
       this.players.push(playerOne, playerTwo);
       this.playersCreated = true;
-      console.log("Created", this.players);
+      // console.log("Created", this.players);
     }
 
     // Reset game state
@@ -177,19 +176,18 @@ class Game {
 
   // Method to switch between players
   switchActivePlayer() {
-    console.log("switchActivePlayer Method Activated");
-
+    // console.log("switchActivePlayer Method Activated");
     if (this.activePlayerIndex === 0) {
       this.activePlayerIndex = 1;
     } else {
       this.activePlayerIndex = 0;
-      console.log("Active player index is", this.activePlayerIndex);
+      // console.log("Active player index is", this.activePlayerIndex);
     }
   }
 
   // Method to determine results
   determineResult() {
-    console.log("determineResult Method Activated");
+    // console.log("determineResult Method Activated");
 
     /** Solution
      * Contains the solution to win the game using rows, columns or diagonals.
@@ -217,14 +215,14 @@ class Game {
       const a = solution[0]; // Extract indexes for a, b, c from current solution
       const b = solution[1];
       const c = solution[2];
-      console.log(`check ${a}, ${b}, ${c} for win`);
+      // console.log(`check ${a}, ${b}, ${c} for win`);
 
       if (
         // Checks if symbol placement is the same across  a, b and c
         this.board[a] && //Checks if not empty
         this.board[a] === this.board[b] && this.board[a] === this.board[c] //Checks that a and b are equal and that b and c are equal
       ) {
-        console.log("solution", a, b, c);
+        // console.log("solution", a, b, c);
 
         return this.board[a]; // If they are the same, return winning symbol
       }
@@ -246,9 +244,9 @@ class Game {
     return null;
   }
 
-  // Method to update board and check for win/tie
+  // Method to update board and check for win/tie/draw
   updateBoard(clickedCellIndex) {
-    console.log("updateBoard Method Activated");
+    // console.log("updateBoard Method Activated");
 
     this.board[clickedCellIndex] = this.players[this.activePlayerIndex].symbol;
 

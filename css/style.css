@@ -2,8 +2,7 @@
 Finger Paint: font-family: 'Finger Paint', cursive;
 Audiowide: font-family: 'Audiowide', cursive;
 */
-@import url("https://fonts.googleapis.com/css2?family=Finger+Paint&family=Zen+Tokyo+Zoo&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Finger+Paint&display=swap');
 
 /* CSS Reset */
 * {
