@@ -12,65 +12,78 @@ Audiowide: font-family: 'Audiowide', cursive;
 }
 
 /* Site Wide Settings */
+
+
+/* Site Wide Settings */
 body {
-  /* Setting font family and general layout*/
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100vh;
-  min-width: 100%;
-  margin: 0;
-  padding: 0;
-  /* Add background image.
-  Image sourced from: https://unsplash.com/photos/zA7I5BtFbvw
-  */
   background-image: url(../images/pinkBG.jpg);
   position: relative;
-  /*Blur effect placed over the background image*/
   backdrop-filter: blur(10px);
 }
 
-/* Top Container Layout */
-.top-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: 20px;
-}
-
 .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 20px; /* Add some margin for spacing */
   color: #e57373;
   font-size: 4em;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
   font-family: "Audiowide", cursive;
+  z-index: 1; /* Make sure it's above other content */
+}
+/* Adjust .container to add some padding */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  height: 100vh; /* Ensure the container takes the full viewport height */
+  padding: 20px;
+  position: relative;
+  
 }
 
 .score-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 30%;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
 }
+
+
 .score-draw,
 .score-o,
 .score-x {
   color: #e57373;
-  /* padding: 10px; */
-  font-size: 3em;
-  /* align-self: center; */
-  /* flex-direction: column; */
-  justify-content: space-between;
+  font-size: 2.5em;
   font-family: "Audiowide", cursive;
 }
 
-/* Board, Cell Styling and Layout */
 
+/* Adjust .cell styles to center content without the backdrop filter and shadows */
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 5em;
+  color: #e57373;
+  font-family: 'Finger Paint', cursive;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+}
+
+.cell:hover {
+  background-color: lightcoral;
+}
+
+
+/* Keep .board class mostly intact, since it's compatible with Bootstrap grid system */
 .board {
-  margin: 0 auto;
   width: 400px;
   height: 400px;
   display: grid;
@@ -78,41 +91,13 @@ body {
   grid-gap: 25px 0px;
 }
 
-.cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  border-color: white;
-  border-style: solid;
-  font-size: 5em;
-  color: #e57373;
-  font-family: "Finger Paint", cursive;
-  cursor: pointer;
-  /* Add transparency to the background color of each cell.
-  This is achieved by adding a fourth value to RGB which controls 
-  the opacity and transparency of the color.*/
-  background-color: rgba(255, 255, 255, 0.2);
-  /* Add blur effect to background of each cell */
-  backdrop-filter: blur(10px);
-  width: 100px;
-  height: 100px;
-  padding: 20px;
-  /* Add individual box shadows to each cell */
-  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.5); /* Adjust shadow values */
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow values */
-}
-
-.cell:hover {
-  background-color: lightcoral;
-}
 
 /* Buttons Styling and Layout */
 .button-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 
 /* Style for the grayed-out button */
@@ -150,6 +135,7 @@ body {
   font-family: "Audiowide", cursive;
 }
 
+
 .reset-button {
   color: #e57373;
   background-color: rgba(255, 255, 255, 0.3);
@@ -164,6 +150,74 @@ body {
   background-color: #e57373;
   color: #fff;
 }
+
+/* Consolidated Media Queries */
+@media (max-width: 768px) {
+  /* Adjust logo size */
+  .logo {
+    font-size: 3em;
+  }
+
+  /* Adjust scores font size */
+  .score-draw,
+  .score-o,
+  .score-x {
+    font-size: 2em;
+  }
+
+  /* Adjust cells font size */
+  .cell {
+    font-size: 4em;
+  }
+
+  /* Adjust buttons font size */
+  .start-button,
+  .reset-button {
+    font-size: 1.2em;
+  }
+
+  /* Adjust game message font size */
+  .game-message {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust logo size */
+  .logo {
+    font-size: 2.5em;
+  }
+
+  /* Adjust scores font size */
+  .score-draw,
+  .score-o,
+  .score-x {
+    font-size: 1.5em;
+  }
+
+  /* Adjust cells font size */
+  .cell {
+    font-size: 3em;
+  }
+
+  /* Adjust buttons font size */
+  .start-button,
+  .reset-button {
+    font-size: 1em;
+  }
+
+  /* Adjust game message font size */
+  .game-message {
+    font-size: 1.5em;
+  }
+
+  /* Add flex properties to score container for small screens */
+  .score-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
 
 /* Resources used
 https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids
