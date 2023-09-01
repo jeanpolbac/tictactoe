@@ -12,14 +12,23 @@ Audiowide: font-family: 'Audiowide', cursive;
 }
 
 /* Site Wide Settings */
-
-
-/* Site Wide Settings */
 body {
   font-family: Arial, sans-serif;
   background-image: url(../images/pinkBG.jpg);
   position: relative;
   backdrop-filter: blur(10px);
+}
+
+/* Container Layouts */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  height: 100vh; /* Ensure the container takes the full viewport height */
+  padding: 20px;
+  position: relative;
+  
 }
 
 .logo {
@@ -32,25 +41,15 @@ body {
   font-family: "Audiowide", cursive;
   z-index: 1; /* Make sure it's above other content */
 }
-/* Adjust .container to add some padding */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  height: 100vh; /* Ensure the container takes the full viewport height */
-  padding: 20px;
-  position: relative;
-  
-}
 
 .score-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: nowrap;
   margin-bottom: 20px;
 }
-
 
 .score-draw,
 .score-o,
@@ -61,28 +60,7 @@ body {
 }
 
 
-/* Adjust .cell styles to center content without the backdrop filter and shadows */
-.cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  font-size: 5em;
-  color: #e57373;
-  font-family: 'Finger Paint', cursive;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 100px;
-  height: 100px;
-  padding: 20px;
-}
-
-.cell:hover {
-  background-color: lightcoral;
-}
-
-
-/* Keep .board class mostly intact, since it's compatible with Bootstrap grid system */
+/* Board, Cell Styling and Layout */
 .board {
   width: 400px;
   height: 400px;
@@ -91,21 +69,37 @@ body {
   grid-gap: 25px 0px;
 }
 
-
-/* Buttons Styling and Layout */
-.button-container {
-  flex-direction: column;
-  justify-content: space-between;
+.cell {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  
+  border-radius: 20px;
+  border-color: white;
+  border-style: solid;
+  font-size: 5em;
+  color: #e57373;
+  font-family: 'Finger Paint', cursive;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  /* Add individual box shadows to each cell */
+  box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.5); /* Adjust shadow values */
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow values */
 }
 
-/* Style for the grayed-out button */
+.cell:hover {
+  background-color: lightcoral;
+}
+
+/* Style for Start Button */
 .start-button {
   color: #e57373;
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #e57373;
-  padding: 10px 10px;
+  margin-top: 2em;
+  padding: 5px 5px;
   font-size: 1.5em;
   border-radius: 15px;
   font-family: "Audiowide", cursive;
@@ -127,20 +121,12 @@ body {
   cursor: not-allowed;
 }
 
-.game-message {
-  color: #e57373;
-  padding: 10px;
-  font-size: 2.5em;
-  align-self: center;
-  font-family: "Audiowide", cursive;
-}
-
-
+/* Style for Reset Button */
 .reset-button {
   color: #e57373;
   background-color: rgba(255, 255, 255, 0.3);
   border: 2px solid #e57373;
-  padding: 10px 10px;
+  padding: 5px 5px;
   font-size: 1.5em;
   border-radius: 15px;
   font-family: "Audiowide", cursive;
@@ -149,6 +135,15 @@ body {
 .reset-button:hover {
   background-color: #e57373;
   color: #fff;
+}
+
+/* Style for Game Message */
+.game-message {
+  color: #e57373;
+  padding: 10px;
+  font-size: 2.5em;
+  align-self: center;
+  font-family: "Audiowide", cursive;
 }
 
 /* Consolidated Media Queries */
@@ -186,6 +181,7 @@ body {
   /* Adjust logo size */
   .logo {
     font-size: 2.5em;
+    justify-content: center;
   }
 
   /* Adjust scores font size */
@@ -211,9 +207,10 @@ body {
     font-size: 1.5em;
   }
 
-  /* Add flex properties to score container for small screens */
+  /* Ensure that score container items stay in a single row */
   .score-container {
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-around;
   }
 }
@@ -226,4 +223,5 @@ https://flexboxfroggy.com/
 https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
 https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
 https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgba
+https://getbootstrap.com/docs/5.3/getting-started/introduction/
 */
